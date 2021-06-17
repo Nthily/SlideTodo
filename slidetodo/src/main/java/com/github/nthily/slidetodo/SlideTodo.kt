@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
+import java.time.format.TextStyle
 import kotlin.math.roundToInt
 
 sealed class Status {
@@ -38,7 +39,11 @@ fun SlideTodo(
     slideWidth: Dp = 400.dp,
     slideColor: Color,
     navigationIcon: @Composable () -> Unit,
-    endIcon: @Composable () -> Unit
+    navigationIconPadding: Dp = 0.dp,
+    endIcon: @Composable () -> Unit,
+    widthAnimationMillis: Int = 1000,
+    text: String,
+    textStyle: androidx.compose.ui.text.TextStyle
 ){
 
 
@@ -65,7 +70,7 @@ fun SlideTodo(
 
     val width by animateDpAsState(
         targetValue = if(iconSizeAnimation == 0.dp) slideHeight else slideWidth,
-        tween(1000)
+        tween(widthAnimationMillis)
     )
 
 
@@ -84,9 +89,12 @@ fun SlideTodo(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ){
-                CompositionLocalProvider(LocalContentAlpha.provides(textAlpha)) {
+                CompositionLocalProvider(
+                    LocalContentAlpha provides textAlpha,
+                    LocalTextStyle provides textStyle
+                ) {
                     Text(
-                        text = "Slide to Unlock"
+                        text = text
                     )
                 }
             }
@@ -98,6 +106,7 @@ fun SlideTodo(
                     shape = CircleShape,
                     modifier = Modifier
                         .size(iconSizeAnimation)
+                        .padding(navigationIconPadding)
                         .swipeable(
                             state = swipeableState,
                             anchors = mapOf(
