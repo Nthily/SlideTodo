@@ -41,26 +41,133 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ){
-                    SlideTodo(
-                        slideColor = Color(0xFF0079D3),
-                        navigationIcon = {
-                            Icon(
-                                Icons.Filled.ArrowForward,
-                                contentDescription = null,
-                                modifier = Modifier.padding(8.dp)
-                            )
-                        },
-                        endIcon = {
-                            Icon(
-                                Icons.Filled.Done,
-                                contentDescription = null,
-                                modifier = Modifier.padding(8.dp),
-                                tint = Color.White
-                            )
-                        },
-                        slideHeight = 60.dp,
-                        slideWidth =  400.dp
-                    )
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ){
+                        SlideTodo(
+                            slideColor = Color(0xFF0079D3),
+                            navigationIcon = {
+                                Icon(
+                                    Icons.Filled.ArrowForward,
+                                    contentDescription = null,
+                                    modifier = Modifier.padding(8.dp)
+                                )
+                            },
+                            endIcon = {
+                                Icon(
+                                    Icons.Filled.Done,
+                                    contentDescription = null,
+                                    modifier = Modifier.padding(8.dp),
+                                    tint = Color.White
+                                )
+                            },
+                            slideHeight = 60.dp,
+                            slideWidth =  400.dp
+                        )
+                        SlideTodo(
+                            slideColor = Color(0xFFFF5252),
+                            navigationIcon = {
+                                Icon(
+                                    Icons.Filled.ArrowForward,
+                                    contentDescription = null,
+                                    modifier = Modifier.padding(8.dp)
+                                )
+                            },
+                            endIcon = {
+                                Icon(
+                                    Icons.Filled.Done,
+                                    contentDescription = null,
+                                    modifier = Modifier.padding(8.dp),
+                                    tint = Color.White
+                                )
+                            },
+                            slideHeight = 60.dp,
+                            slideWidth = 300.dp,
+                            text = "Slide to Unlock"
+                        )
+                        SlideTodo(
+                            slideColor = Color(0xFFE040FB),
+                            navigationIcon = {
+                                Icon(
+                                    Icons.Filled.ArrowForward,
+                                    contentDescription = null,
+                                    modifier = Modifier.padding(8.dp)
+                                )
+                            },
+                            endIcon = {
+                                Icon(
+                                    Icons.Filled.Done,
+                                    contentDescription = null,
+                                    modifier = Modifier.padding(8.dp),
+                                    tint = Color.White
+                                )
+                            },
+                            slideHeight = 60.dp,
+                            slideWidth =  200.dp
+                        )
+                        SlideTodo(
+                            slideColor = Color(0xFFFF6E40),
+                            navigationIcon = {
+                                Icon(
+                                    Icons.Filled.ArrowForward,
+                                    contentDescription = null,
+                                    modifier = Modifier.padding(8.dp)
+                                )
+                            },
+                            endIcon = {
+                                Icon(
+                                    Icons.Filled.Done,
+                                    contentDescription = null,
+                                    modifier = Modifier.padding(8.dp),
+                                    tint = Color.White
+                                )
+                            },
+                            slideHeight = 60.dp,
+                            slideWidth =  150.dp
+                        )
+                        SlideTodo(
+                            slideColor = Color(0xFFFFD740),
+                            navigationIcon = {
+                                Icon(
+                                    Icons.Filled.ArrowForward,
+                                    contentDescription = null,
+                                    modifier = Modifier.padding(8.dp)
+                                )
+                            },
+                            endIcon = {
+                                Icon(
+                                    Icons.Filled.Done,
+                                    contentDescription = null,
+                                    modifier = Modifier.padding(8.dp),
+                                    tint = Color.White
+                                )
+                            },
+                            slideHeight = 60.dp,
+                            slideWidth =  400.dp,
+                            elevation = 8.dp
+                        )
+                        SlideTodo(
+                            slideColor = Color(0xFF64FFDA),
+                            navigationIcon = {
+                                Icon(
+                                    Icons.Filled.ArrowForward,
+                                    contentDescription = null,
+                                    modifier = Modifier.padding(8.dp)
+                                )
+                            },
+                            endIcon = {
+                                Icon(
+                                    Icons.Filled.Done,
+                                    contentDescription = null,
+                                    modifier = Modifier.padding(8.dp),
+                                    tint = Color.White
+                                )
+                            },
+                            slideHeight = 60.dp,
+                            slideWidth =  400.dp,
+                            elevation = 9.dp
+                        )
+                    }
                 }
             }
         }

@@ -39,7 +39,8 @@ fun SlideTodo(
     endIcon: @Composable () -> Unit,
     widthAnimationMillis: Int = 1000,
     text: String? = null,
-    textStyle: androidx.compose.ui.text.TextStyle? = null
+    textStyle: androidx.compose.ui.text.TextStyle? = null,
+    elevation: Dp = 0.dp
 ){
 
 
@@ -75,7 +76,8 @@ fun SlideTodo(
         modifier = Modifier
             .height(slideHeight)
             .width(width),
-        color = slideColor
+        color = slideColor,
+        elevation = elevation
     ) {
         Box(
             modifier = Modifier
@@ -85,16 +87,17 @@ fun SlideTodo(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ){
-                if(textStyle != null){
-                    CompositionLocalProvider(
-                        LocalContentAlpha provides textAlpha,
-                        LocalTextStyle provides textStyle
-                    ) {
-                        if (text != null) {
+                CompositionLocalProvider(
+                    LocalContentAlpha provides textAlpha,
+                ) {
+                    text?.let { it ->
+                        textStyle?.let{
                             Text(
-                                text = text
+                                text = text,
+                                style = it
                             )
                         }
+                        Text(it)
                     }
                 }
             }
