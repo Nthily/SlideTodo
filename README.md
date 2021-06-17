@@ -23,5 +23,22 @@ dependencies {
 }
 ```
 
+``` kotlin
+@ExperimentalAnimationApi
+@ExperimentalMaterialApi
+@Composable
+fun SlideTodo(
+    slideHeight: Dp = 60.dp,
+    slideWidth: Dp = 400.dp,
+    slideColor: Color,
+    navigationIcon: @Composable () -> Unit,
+    navigationIconPadding: Dp = 0.dp,
+    endIcon: @Composable () -> Unit,
+    widthAnimationMillis: Int = 1000,
+    text: String? = null,
+    textStyle: androidx.compose.ui.text.TextStyle? = null,
+    elevation: Dp = 0.dp
+)
+```
 
 ![](demoo.gif)
