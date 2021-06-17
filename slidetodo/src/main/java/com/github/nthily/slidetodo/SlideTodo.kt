@@ -38,8 +38,8 @@ fun SlideTodo(
     navigationIconPadding: Dp = 0.dp,
     endIcon: @Composable () -> Unit,
     widthAnimationMillis: Int = 1000,
-    text: String,
-    textStyle: androidx.compose.ui.text.TextStyle
+    text: String? = null,
+    textStyle: androidx.compose.ui.text.TextStyle? = null
 ){
 
 
@@ -85,13 +85,17 @@ fun SlideTodo(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ){
-                CompositionLocalProvider(
-                    LocalContentAlpha provides textAlpha,
-                    LocalTextStyle provides textStyle
-                ) {
-                    Text(
-                        text = text
-                    )
+                if(textStyle != null){
+                    CompositionLocalProvider(
+                        LocalContentAlpha provides textAlpha,
+                        LocalTextStyle provides textStyle
+                    ) {
+                        if (text != null) {
+                            Text(
+                                text = text
+                            )
+                        }
+                    }
                 }
             }
             Box(

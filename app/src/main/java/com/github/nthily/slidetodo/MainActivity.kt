@@ -59,11 +59,7 @@ class MainActivity : ComponentActivity() {
                             )
                         },
                         slideHeight = 60.dp,
-                        slideWidth =  400.dp,
-                        text = "Slide to Unlock",
-                        textStyle = TextStyle(
-                            color = Color.White,
-                        )
+                        slideWidth =  400.dp
                     )
                 }
             }
