@@ -59,11 +59,9 @@ class MainActivity : ComponentActivity() {
                                 Icon(
                                     Icons.Filled.Done,
                                     contentDescription = null,
-                                    modifier = Modifier.padding(8.dp),
-                                    tint = Color.White
                                 )
                             },
-                            slideHeight = 60.dp,
+                            slideHeight = 160.dp,
                             slideWidth =  400.dp,
                             text = "Slide to Play Game!!",
                             textStyle = TextStyle(
@@ -85,7 +83,6 @@ class MainActivity : ComponentActivity() {
                                 Icon(
                                     Icons.Filled.Done,
                                     contentDescription = null,
-                                    modifier = Modifier.padding(8.dp),
                                     tint = Color.White
                                 )
                             },
@@ -109,7 +106,6 @@ class MainActivity : ComponentActivity() {
                                 Icon(
                                     Icons.Filled.Done,
                                     contentDescription = null,
-                                    modifier = Modifier.padding(8.dp),
                                     tint = Color.White
                                 )
                             },
@@ -155,7 +151,8 @@ class MainActivity : ComponentActivity() {
                             },
                             slideHeight = 60.dp,
                             slideWidth =  400.dp,
-                            elevation = 8.dp
+                            elevation = 8.dp,
+                            navigationIconPadding = 8.dp
                         )
                         SlideTodo(
                             slideColor = Color(0xFF64FFDA),
@@ -176,7 +173,8 @@ class MainActivity : ComponentActivity() {
                             },
                             slideHeight = 60.dp,
                             slideWidth =  400.dp,
-                            elevation = 9.dp
+                            elevation = 9.dp,
+                            navigationIconPadding = 12.dp
                         )
                     }
                 }

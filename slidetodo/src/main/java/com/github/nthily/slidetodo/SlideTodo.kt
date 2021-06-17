@@ -31,6 +31,7 @@ enum class state{
 @ExperimentalMaterialApi
 @Composable
 fun SlideTodo(
+    modifier: Modifier = Modifier,
     slideHeight: Dp = 60.dp,
     slideWidth: Dp = 400.dp,
     slideColor: Color,
@@ -71,62 +72,76 @@ fun SlideTodo(
     )
 
 
-    Surface(
-        shape = CircleShape,
-        modifier = Modifier
-            .height(slideHeight)
-            .width(width),
-        color = slideColor,
-        elevation = elevation
+    AnimatedVisibility(
+        visible = width != slideHeight,
+        exit = fadeOut(
+            targetAlpha = 0f,
+            tween(1000, easing = LinearEasing, delayMillis = 1000)
+        )
     ) {
-        Box(
-            modifier = Modifier
-                .padding(5.dp),
-        ){
+        Surface(
+            shape = CircleShape,
+            modifier = modifier
+                .height(slideHeight)
+                .width(width),
+            color = slideColor,
+            elevation = elevation
+        ) {
             Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
+                modifier = Modifier
+                    .padding(5.dp),
             ){
-                text?.let { it ->
-                    if(textStyle != null){
-                        Text(
-                            text = it,
-                            style = textStyle.copy(color = textStyle.color.copy(alpha = textAlpha))
-                        )
-                    } else Text(it)
-                }
-            }
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.CenterStart
-            ){
-                Surface(
-                    shape = CircleShape,
-                    modifier = Modifier
-                        .size(iconSizeAnimation)
-                        .padding(navigationIconPadding)
-                        .swipeable(
-                            state = swipeableState,
-                            anchors = mapOf(
-                                0f to state.Start,
-                                slideDistance to state.End
-                            ),
-                            thresholds = { _, _ -> FractionalThreshold(0.9f) },
-                            orientation = Orientation.Horizontal
-                        )
-                        .offset {
-                            IntOffset(swipeableState.offset.value.roundToInt(), 0)
-                        },
-                ) {
-                    navigationIcon()
-                }
-            }
-            AnimatedVisibility(visible = width == slideHeight) {
                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ){
-                    endIcon()
+                    text?.let { it ->
+                        if(textStyle != null){
+                            Text(
+                                text = it,
+                                style = textStyle.copy(color = textStyle.color.copy(alpha = textAlpha))
+                            )
+                        } else Text(it)
+                    }
+                }
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.CenterStart
+                ){
+                    Surface(
+                        shape = CircleShape,
+                        modifier = Modifier
+                            .size(iconSizeAnimation)
+                            .padding(navigationIconPadding)
+                            .swipeable(
+                                state = swipeableState,
+                                anchors = mapOf(
+                                    0f to state.Start,
+                                    slideDistance to state.End
+                                ),
+                                thresholds = { _, _ -> FractionalThreshold(0.9f) },
+                                orientation = Orientation.Horizontal
+                            )
+                            .offset {
+                                IntOffset(swipeableState.offset.value.roundToInt(), 0)
+                            },
+                    ) {
+                        navigationIcon()
+                    }
+                }
+                AnimatedVisibility(visible = width == slideHeight) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ){
+                        Surface(
+                            modifier = Modifier.size(iconSize),
+                            color = Color.Transparent
+                        ) {
+                            endIcon()
+                        }
+                    }
                 }
             }
         }
