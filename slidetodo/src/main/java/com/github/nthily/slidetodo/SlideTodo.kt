@@ -23,12 +23,8 @@ import androidx.compose.ui.unit.IntOffset
 import java.time.format.TextStyle
 import kotlin.math.roundToInt
 
-sealed class Status {
-    enum class state{
-        Start, End
-    }
-    object Start: Status()
-    object End: Status()
+enum class state{
+    Start, End
 }
 
 @ExperimentalAnimationApi
@@ -54,11 +50,11 @@ fun SlideTodo(
     }
 
 
-    val swipeableState = rememberSwipeableState(initialValue = Status.state.Start)
+    val swipeableState = rememberSwipeableState(initialValue = state.Start)
 
     var flag by remember { mutableStateOf(iconSize) }
 
-    if(swipeableState.currentValue == Status.state.End){
+    if(swipeableState.currentValue == state.End){
         flag = 0.dp
     }
 
@@ -110,8 +106,8 @@ fun SlideTodo(
                         .swipeable(
                             state = swipeableState,
                             anchors = mapOf(
-                                0f to Status.state.Start,
-                                slideDistance to Status.state.End
+                                0f to state.Start,
+                                slideDistance to state.End
                             ),
                             thresholds = { _, _ -> FractionalThreshold(0.9f) },
                             orientation = Orientation.Horizontal
