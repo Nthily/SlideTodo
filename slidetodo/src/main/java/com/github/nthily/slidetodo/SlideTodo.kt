@@ -87,18 +87,13 @@ fun SlideTodo(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ){
-                CompositionLocalProvider(
-                    LocalContentAlpha provides textAlpha,
-                ) {
-                    text?.let { it ->
-                        textStyle?.let{
-                            Text(
-                                text = text,
-                                style = it
-                            )
-                        }
-                        Text(it)
-                    }
+                text?.let { it ->
+                    if(textStyle != null){
+                        Text(
+                            text = it,
+                            style = textStyle.copy(color = textStyle.color.copy(alpha = textAlpha))
+                        )
+                    } else Text(it)
                 }
             }
             Box(

@@ -24,9 +24,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.github.nthily.slidetodo.ui.theme.SlideTodoTheme
 import kotlin.math.roundToInt
 
@@ -62,7 +64,13 @@ class MainActivity : ComponentActivity() {
                                 )
                             },
                             slideHeight = 60.dp,
-                            slideWidth =  400.dp
+                            slideWidth =  400.dp,
+                            text = "Slide to Play Game!!",
+                            textStyle = TextStyle(
+                                color = Color.White,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.W700
+                            )
                         )
                         SlideTodo(
                             slideColor = Color(0xFFFF5252),
@@ -83,7 +91,10 @@ class MainActivity : ComponentActivity() {
                             },
                             slideHeight = 60.dp,
                             slideWidth = 300.dp,
-                            text = "Slide to Unlock"
+                            text = "Slide to Unlock",
+                            textStyle = TextStyle(
+                                color = Color.White
+                            )
                         )
                         SlideTodo(
                             slideColor = Color(0xFFE040FB),
