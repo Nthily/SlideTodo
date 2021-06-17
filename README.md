@@ -19,7 +19,7 @@ allprojects {
 
 ``` 
 dependencies {
-    implementation 'com.github.Nthily:SlideTodo:1.0.0'
+    implementation 'com.github.Nthily:SlideTodo:1.2.0'
 }
 ```
 
